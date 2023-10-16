@@ -92,7 +92,7 @@ main(){
 	gf_output
 
 	wait 
-	run nuclei
+	run_nuclei
 
 
 
