@@ -64,6 +64,19 @@ gf_output(){
 
 }
 
+run_nuclei(){
+
+	echo "nuclei go ::::)))))"
+	mkdir nuclei
+	nuclei -l js_files.txt >> ./nuclei/nuclei_js_files_&
+	echo "nuclei just finished js filse "
+	nuclei -l waybackurls.txt >> ./nuclei/nuclei_waybackurls.txt&
+	echo "nuclei just finished waybackurls.txt file"
+	nuclei -l ./gf/* >> ./nuclei/nuclei_gf.txt
+	echo "nuclei finished it's job"
+	
+
+}
 
 
 main(){
@@ -71,12 +84,15 @@ main(){
 	subdomain_discovery
 
 	hidden_files_discovery
-
+	wait
 	collect_all_links
 	
 	collect_js_files
 
 	gf_output
+
+	wait 
+	run nuclei
 
 
 
